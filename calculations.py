@@ -42,13 +42,31 @@ def convolve(magMap,intensityMap,regionData):
 # example of regionData variable
 # regionData=[bottomleftCorner,[xrange,yrange]]
 	mapRegion=isolateRegion(magMap,regionData[0],regionData[1])
-	IMsize=np.shape(len(intensityMap))
+	IMsize=np.shape(intensityMap)
 	i=0
 	points=list()
 	while i < IMsize[2]:
 		dummy=mapRegion[0+i:IMsize[2]+i,0:]
 		dummy=intensityMap*dummy
 		points.append(sum(dummy))
+
+	return(points)
+
+def where(mapArray,valueRange):
+	mapSize=np.shape(mapArray)
+	values=list()
+	for in range(0,mapSize-1):
+		if mapArray[i] >= valueRange[0] and i<= valueRange[1]:
+			values.append(i)
+
+	return(values)
+
+
+def xycoordinate(map,point):
+	IMsize=np.shape(map)
+	xpoint=point%IMsize[0]
+	ypoint=point//IMsize[0]
+	return([xpoint,ypoint])
 
 
 def tilt(magMap,degree):
@@ -61,8 +79,13 @@ def tilt(magMap,degree):
 	center=mapSize/2
 	array=distanceMap(mapSize)
 	newarray=emptyArray(mapSize)
-	for i in range(0,len(array)-1):
+	# need to make the points of the "circle" that would go away when the source is tilted by some degree
+	# look at tiltimage in old lensingResearch directory
+	# for i in range(0,mapSize[0]):
 
+
+
+	return()
 
 
 
