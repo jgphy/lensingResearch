@@ -2,6 +2,7 @@ from constants import *
 import numpy as np 
 import math
 import structures
+
 def temperatureMap(distMap,isco):
 	Mdot=ratio*8.0*math.pi*c*mProton*isco/sigT #kg/s based on black hole with no spin 
 	A=(G*BHmass*Mdot)/(8.0*math.pi*sigma)
