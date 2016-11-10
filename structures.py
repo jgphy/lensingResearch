@@ -2,15 +2,15 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 
-def distanceMap(mapSize):
-	dmap=np.zeros((mapSize,mapSize))
+def distanceMap(mapSize,pixelSize):
+	
+	dMap=np.zeros((mapSize,mapSize))
 	center=mapSize//2
 	for i in range (0,mapSize):
 		for j in range(0,mapSize):
-			a[i,j]=math.sqrt((i-center)**2+(j-center)**2)
-
-	dmap=np.array(dmap)
-	return(dmap)
+			dMap[i,j]=math.sqrt((i-center)**2+(j-center)**2)
+			dMap[i,j]=dMap[i,j]*pixelSize
+	return(dMap)
 
 
 def emptyArray(size):
@@ -19,30 +19,34 @@ def emptyArray(size):
 def Gap(surfaceMap,valueRange,metric):
 
 	if metric== "mapValues":
-		for i in surfaceMap:
-			if (surfaceMap[i] >= valueRange[0]) or (surfaceMap[i] <= valueRange[1]):
-				surfaceMap[i]=0
+		for i in range(0,len(surfaceMap)):
+			for j in range(0,len(surfaceMap)):
+				if (surfaceMap[i,j] >= valueRange[0]) or (surfaceMap[i,j] <= valueRange[1]):
+					surfaceMap[i,j]=0
 	if metric== "distanceValues":
 		size=surfaceMap.shape
-		dummy= distanceMap(size[0])
-		for i in dummy:
-			if (dummy[i] >= valueRange[0]) or (dummy[i] <= valueRange[1]):
-				surfaceMap[i]=0
+		dummy= distanceMap(size[0],1)
+		for i in range(0,size[0]):
+			for j in range(0,size[0]):
+				if (dummy[i,j] >= valueRange[0]) and (dummy[i,j] <= valueRange[1]):
+					surfaceMap[i,j]=0
 
 	return(surfaceMap)
 
 def invertedGap(surfaceMap,valueRange,metric):
 
 	if metric== "mapValues":
-		for i in surfaceMap:
-			if (surfaceMap[i] <= valueRange[0]) or (surfaceMap[i] >= valueRange[1]):
-				surfaceMap[i]=0
+		for i in range(0,len(surfaceMap)):
+			for j in range(0,len(surfaceMap)):
+				if (surfaceMap[i,j] <= valueRange[0]) or (surfaceMap[i,j] >= valueRange[1]):
+					surfaceMap[i,j]=0
 	if metric== "distanceValues":
 		size=surfaceMap.shape
-		dummy= distanceMap(size[0])
-		for i in dummy:
-			if (dummy[i] <= valueRange[0]) or (dummy[i] >= valueRange[1]):
-				surfaceMap[i]=0
+		dummy= distanceMap(size[0],1)
+		for i in range(0,len(surfaceMap)):
+			for j in range(0,len(surfaceMap)):
+				if (dummy[i,j] <= valueRange[0]) or (dummy[i,j] >= valueRange[1]):
+					surfaceMap[i,j]=0
 
 	return(surfaceMap)
 

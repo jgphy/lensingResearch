@@ -3,25 +3,39 @@ import numpy as np
 import math
 import structures
 
-def temperatureMap(distMap,isco):
-	Mdot=ratio*8.0*math.pi*c*mProton*isco/sigT #kg/s based on black hole with no spin 
-	A=(G*BHmass*Mdot)/(8.0*math.pi*sigma)
+def SStemperatureMap(distMap,isco,BHmass): #using SS disk model 
+
+	Mdot=ratio*8.0*math.pi*c*mProton*isco
+	Mdot=Mdot/sigT #kg/s based on black hole with no spin 
+	A=(G*BHmass*Mdot)/(8.0*(math.pi)*sigma)
 	A=A**(.25)
-	dimension=math.sqrt(len(distMap))
-	tempMap=structures.distanceMap(dimension)
+	dimension=(len(distMap))
+	dimension=int(dimension)
+	tempMap=np.zeros((dimension,dimension))
 	for i in  range(dimension-1):
-		if map[i]!=0:
-			temp[i]=A*(distMap[i]**(-3.0/4.0))
+		for j in range(dimension-1):
+			if distMap[i,j]!=0:
+				dummy=((distMap[i,j])**(-3.0/4.0))
+				tempMap[i,j]=A*dummy
+				# print(t
+	return(tempMap)
 	
 
 
 def IntensityMap(tempMap,wValue):
-	intensity=np.zeros((mapSize,mapSize))
+
+	dimension=(len(tempMap))
+	dimension=int(dimension)
+	intensity=np.zeros((dimension,dimension))
 	for i in range(len(tempMap)-1):
-		if tempMap[i] !=0:
-			exp=(e**(h*c))/(KB*wValue*tempMap[i])
-			dummy=(wValue**5)*(exp-1)
-			intensity[i]=dummy
+		for j in range(len(tempMap)-1):
+			if tempMap[i,j] !=0:
+				dummy=(h*c)/(KB*wValue*tempMap[i,j])
+				exp=np.exp(dummy)
+				dummy=(wValue**-5)*(exp-1.0)
+				dummy=2.0*h*(c**2)/dummy
+				intensity[i,j]=dummy
+	return(intensity)
 
 
 def normalize(mapArray):
@@ -56,7 +70,7 @@ def convolve(magMap,intensityMap,regionData):
 def where(mapArray,valueRange):
 	mapSize=np.shape(mapArray)
 	values=list()
-	for in range(0,mapSize-1):
+	for i in range(0,mapSize-1):
 		if mapArray[i] >= valueRange[0] and i<= valueRange[1]:
 			values.append(i)
 

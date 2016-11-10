@@ -11,7 +11,7 @@ def isco(BHmass,spin):
 	if spin == "retrograde":
 		factor=9.0
 
-	gravitationalRadius=(2.0*G*BHmass)/(c**2)
+	gravitationalRadius=(G*BHmass)/(c**2)
 	isco=factor*gravitationalRadius
 	
 	return(isco)
