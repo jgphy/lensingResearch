@@ -2,7 +2,7 @@ import math
 from constants import * 
 
 def isco(BHmass,spin):
-	BHmass=BHmass*solarMass
+	# BHmass=BHmass*solarMass
 
 	if spin == "prograde":
 		factor=1.0
@@ -17,7 +17,7 @@ def isco(BHmass,spin):
 	return(isco)
 
 def gravRadius(BHmass):
-	BHmass=BHmass*solarMass
+	# BHmass=BHmass*solarMass
 	radius=(2.0*G*BHmass)/(c**2)
 	
 	return(radius)
@@ -35,7 +35,7 @@ def mass(isco,spin):
 	return(BHmass)
 
 def acrretionRate(BHmass,ratio,isco):
-	BHmass=BHmass*solarMass
+	# BHmass=BHmass*solarMass
 	Mdot=(ratio)*((8.0*math.pi*3.0e8*mProton*isco)/sigT) 		  #accretion rate               : kg/s
 
 	return(Mdot)

@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 from scipy.misc import toimage
-# import importlib
-# importlib.import_module('mpl_toolkits.mplot3d').__path__
 
 def surfacePlot(surface):
 	dimensions=len(surface)
@@ -15,7 +13,20 @@ def surfacePlot(surface):
 	fig = plt.figure()
 	ax = fig.add_subplot(1,1,1, projection='3d')
 	surf = ax.plot_surface(X, Y, surface, rstride=1, cstride=1, cmap=cm.coolwarm,linewidth=0, antialiased=False)
+	# cset = ax.contourf(X, Y, surface, zdir='z',offset=-6,cmap=cm.cool)
 	plt.show()
 
 def imagePlot(image):
+
 	toimage(image).show()
+
+def writeToFile(data):
+	target=open(SBmap.txt,'w')
+	target.truncate()
+	for i in range(0,len(data)):
+		for j in range(0,len(data)):
+			target.write(data[i,j])
+			if i < (len(data)-1):
+				target.write("\n")
+
+

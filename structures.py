@@ -12,16 +12,15 @@ def distanceMap(mapSize,pixelSize):
 			dMap[i,j]=dMap[i,j]*pixelSize
 	return(dMap)
 
-
 def emptyArray(size):
-	return(np.zeros(size,size))
+	return(np.zeros((size,size)))
 
-def Gap(surfaceMap,valueRange,metric):
+def addGap(surfaceMap,valueRange,metric):
 
 	if metric== "mapValues":
 		for i in range(0,len(surfaceMap)):
 			for j in range(0,len(surfaceMap)):
-				if (surfaceMap[i,j] >= valueRange[0]) or (surfaceMap[i,j] <= valueRange[1]):
+				if (surfaceMap[i,j] >= valueRange[0]) and (surfaceMap[i,j] <= valueRange[1]):
 					surfaceMap[i,j]=0
 	if metric== "distanceValues":
 		size=surfaceMap.shape
@@ -50,7 +49,8 @@ def invertedGap(surfaceMap,valueRange,metric):
 
 	return(surfaceMap)
 
-
 def info():
 	print("distanceMap(mapSize= 'dimensions of map') : return a n x n array with distance values from the center.")
 	print("Gap(surfaceMap,valueRange=[1,2],metric= mapValues or distanceValues): inserts a gap into surfaceMap")
+	print("invertedGap(surfaceMap,valueRange[1,2], metric= mapValues or distanceValues: zeros everything not within valueRange")
+	print("emptyArray(size): returns 2d array filled with zeros")
