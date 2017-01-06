@@ -21,12 +21,12 @@ def imagePlot(image):
 	toimage(image).show()
 
 def writeToFile(data):
-	target=open(SBmap.txt,'w')
+	target=open('SBmap.txt','w')
 	target.truncate()
 	for i in range(0,len(data)):
 		for j in range(0,len(data)):
-			target.write(data[i,j])
-			if i < (len(data)-1):
+			target.write(str(data[i,j]))
+			if j < (len(data)):
 				target.write("\n")
 
 

@@ -6,43 +6,44 @@ from constants import *
 import numpy
 def main():
 	# SET UP STUFF===================================== 
-
-	mapSize=300
-	BHmass=2.0e8*solarMass
+	quasarName="PG1115+080"
+	mapSize=500
+	BHmass=1.0e9*solarMass
 	spin='no spin'
-	R_E= 1.81e+15
+	R_E= 3.62e14
 	isco=quasar.isco(BHmass,"no spin")
 	# print(isco)
-	lRpixelSize=R_E*10./10000.
+	lRpixelSize=R_E*25./10000.
  	hRpixelSize=R_E*1./10000. 
  	# print(lRpixelSize)
  	pixelSize= lRpixelSize #now given by whatever website
+ 	# print(isco/pixelSize)
  	
 	# mapsSize=calculations.figureOutMapSize(BHmass,spin,pixelSize,isco)
-
+	# print(mapSize)
 
 	#==================================================
-
-
-
-
 
 	dMap=structures.distanceMap(mapSize,lRpixelSize)
 
 
 	dMap=structures.addGap(dMap,[0,6*isco],'mapValues')
-	plotMethods.surfacePlot(dMap)
+	# plotMethods.surfacePlot(dMap)
 	tMap=calculations.SStemperatureMap(dMap,isco,BHmass)
-	# plotMethods.surfacePlot(tMap)
+	# # plotMethods.surfacePlot(tMap)
 	intMap=calculations.IntensityMap(tMap,wBlue)
-	# print(numpy.amax(tMap))
-	intMap=calculations.log(intMap)
-	# print(numpy.amax(intMap))
 	# plotMethods.surfacePlot(intMap)
 
-	# distances=calculations.log(distances)
-	# plotMethods.surfacePlot(intMap)
-	# gappedMap=structures.invertedGap(distances,[100,105],"distanceValues")
-	# plotMethods.surfacePlot(gappedMap)
+
+
+
+
+
+	# normalizedMap=calculations.normalize(intMap)
+	# print(normalizedMap[0,0:10])
+	# print(normalizedMap[0:10,0])
+	# plotMethods.surfacePlot(normalizedMap)
+	# plotMethods.writeToFile(normalizedMap)
+	# # plotMethods.surfacePlot(intMap)
 
 main()

@@ -35,7 +35,8 @@ def IntensityMap(tempMap,wValue):
 	return(intensity)
 
 def normalize(mapArray):
-	tots=sum(mapArray)
+	# tots=sum(sum(mapArray))
+	tots=np.sum(mapArray)
 	return(mapArray/tots)
 
 def log(mapArray):
@@ -102,17 +103,19 @@ def tilt(magMap,degree):
 
 def figureOutMapSize(BHmass,spin,pixelSize,isco):
 	percentDiff=1000
-	mapsize=20
+	mapSize=300
 	tots_not=1
 	while percentDiff >= .001:
-		dmap=structures.distanceMap(mapSize)
-		tMap=calculations.SStemperatureMap(dMap,isco,BHmass)
-		intMap=calculations.IntensityMap(tMap,wBlue)
+		dMap=structures.distanceMap(mapSize,pixelSize)
+		tMap=SStemperatureMap(dMap,isco,BHmass)
+		intMap=IntensityMap(tMap,wBlue)
 		tots=np.sum(intMap)
 		Diff=(tots - tots_not)
 		percentDiff=(Diff/tots_not)*100
-		mapSize=mapSize+1 
-		print(percentDiff)
+		mapSize=mapSize+50 
+		tots_not=tots
+		print(tots)
+		print(Diff)
 	return(mapSize)
 
 
