@@ -7,6 +7,7 @@ def SStemperatureMap(distMap,isco,BHmass): #using SS disk model
 	# BHmass=BHmass*solarMass
 	Mdot=ratio*8.0*math.pi*c*mProton*isco
 	Mdot=Mdot/sigT #kg/s based on black hole with no spin 
+	print(Mdot)
 	A=(G*BHmass*Mdot)/(8.0*(math.pi)*sigma)
 	A=A**(.25)
 	dimension=(len(distMap))

@@ -14,7 +14,8 @@ def main():
 	isco=quasar.isco(BHmass,"no spin")
 	# print(isco)
 	lRpixelSize=R_E*25./10000.
- 	hRpixelSize=R_E*1./10000. 
+ 	hRpixelSize=R_E*1./10000.
+ 	print(lRpixelSize/(3.0e8)) 
  	# print(lRpixelSize)
  	pixelSize= lRpixelSize #now given by whatever website
  	# print(isco/pixelSize)
@@ -30,9 +31,11 @@ def main():
 	dMap=structures.addGap(dMap,[0,6*isco],'mapValues')
 	# plotMethods.surfacePlot(dMap)
 	tMap=calculations.SStemperatureMap(dMap,isco,BHmass)
-	# # plotMethods.surfacePlot(tMap)
+	# plotMethods.surfacePlot(tMap)
 	intMap=calculations.IntensityMap(tMap,wBlue)
-	# plotMethods.surfacePlot(intMap)
+	plotMethods.surfacePlot(intMap)
+	radius=dMap[10,450]
+	print(radius)
 
 
 
