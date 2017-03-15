@@ -5,7 +5,8 @@ import calculations
 from constants import *
 import numpy
 def main():
-	# SET UP STUFF===================================== 
+	# SET UP STUFF=====================================
+	#adding comment to see if stuff is working properly with git 
 	quasarName="PG1115+080"
 	mapSize=500
 	BHmass=1.0e9*solarMass
