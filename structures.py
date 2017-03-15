@@ -49,6 +49,10 @@ def invertedGap(surfaceMap,valueRange,metric):
 
 	return(surfaceMap)
 
+
+def line(start,end,nPoints):
+	return(np.linspace(start,end,nPoints))
+
 def info():
 	print("distanceMap(mapSize= 'dimensions of map') : return a n x n array with distance values from the center.")
 	print("Gap(surfaceMap,valueRange=[1,2],metric= mapValues or distanceValues): inserts a gap into surfaceMap")

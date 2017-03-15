@@ -1,0 +1,37 @@
+notes:March 15
+OUTPUTS:
+
+1.98855e+39
+ISCO [m]
+8.8463961e+12
+accretion rate aka M_dot [Kg/s]
+1.6776586402e+23
+L eddington [J/s]
+6.32744452062
+luminosity at ISCO [J/s]
+luminosity [J/s]
+1.25824398015e+39
+alpha-from Temperature formula
+3.53530944715e+14
+temperature at isco [K]
+68921.1710386
+temperature at ISCO [K]
+68921.1710386
+output of planck function at ISCO lambda=479.0e-9 m 
+dummy
+4.729986801e+15
+other alpha
+0.436128424515
+planckfunction [J/(s m^3)]
+8.65176994615e+15
+
+
+at this point the formulas that i know work are
+
+eddington luminosity 
+accretion Rate
+luminosity
+SSDtemperature
+SSDtemperature1D 
+planckFunction
+I checked all these numbers by hand and got the same thing.

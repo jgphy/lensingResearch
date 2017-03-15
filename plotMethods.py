@@ -30,3 +30,11 @@ def writeToFile(data):
 				target.write("\n")
 
 
+
+def plot(data):
+	plt.plot(data)
+	plt.show()
+
+def xyplot(x,y):
+	plt.plot(x,y)
+	plt.show()

@@ -124,28 +124,6 @@ def figureOutMapSize(BHmass,spin,pixelSize,isco):
 
 
 
-# def wall(surfaceMap,valueRange,metric):
-
-# 	if metric== "mapValues":
-# 		for i in range(0,len(surfaceMap)):
-# 			for j in range(0,len(surfaceMap)):
-# 				if (surfaceMap[i,j] >= valueRange[0]) or (surfaceMap[i,j] <= valueRange[1]):
-# 					surfaceMap[i,j]=0
-# 	if metric== "distanceValues":
-# 		size=surfaceMap.shape
-# 		dummy= distanceMap(size[0],1)
-# 		for i in range(0,size[0]):
-# 			for j in range(0,size[0]):
-# 				if (dummy[i,j] >= valueRange[0]) and (dummy[i,j] <= valueRange[1]):
-# 					surfaceMap[i,j]=0
-
-# 	return(surfaceMap)
-
-
-
-
-
-
 
 
 

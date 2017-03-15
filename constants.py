@@ -1,4 +1,8 @@
-c=299792458				#speed of light						:m/s
+import math
+
+
+pi=math.pi
+c=3.0e8			#speed of light						:m/s
 G=6.673e-11             #Gravitatinal constant              :m^3 kg^-1 s^-2
 solarMass=1.98855e30 	#mass of Sun 						:kg
 mProton=1.67262178e-27  #mass of proton 					:kg 
