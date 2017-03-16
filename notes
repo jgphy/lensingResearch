@@ -1,3 +1,73 @@
+Notes: march 16
+
+OUTPUTS:
+Black hole mass [Kg]:
+1.98855e+39
+
+ISCO [m]:
+8.8463961e+12
+
+accretion rate [Kg/s]
+1.6776586402e+23
+
+eddington luminosity:
+6.32744452062
+
+luminosity from ISCO [J/s]
+1.25824398015e+39
+1.25824398015e+39
+
+temperature at ISCO [K]
+68921.1710386
+
+output of planck function at ISCO lambda=479.0e-9 m 
+8.65176994615e+15
+
+NEXT CHECK:
+first few values from SSD temperature function
+[ 12256.10993736  12274.54480084  12293.04449429  12311.60937671]
+
+check that 1D temp function agrees with the single value function, next two outputs should agree:
+temperature at ISCO:
+68921.1710386
+68921.1710386
+
+first few values of planck Function
+[  4.45481025e+14   4.47280388e+14   4.49088559e+14   4.50905590e+14]
+
+Check that 1D planck function agrees with the single value function, next two ouputs should agree:
+8.65176994615e+15
+8.65176994615e+15
+
+Done with first part of check
+
+check if original and new two-dimensional formulas for temperatures works: next two outputs should agree
+[ 4680.05745208  4687.11102256  4694.17522375  4701.24995678]
+[ 4680.05745208  4687.11102256  4694.17522375  4701.24995678]
+Check if 2D temperature formulas agree at ISCO, next two outputs should agree:
+68921.1710386
+68921.1710386
+testing out planck law formulas, old and new, next four ouputs should agree:
+[  7.69545316e+12   7.77031615e+12   7.84579433e+12   7.92189041e+12]
+[  7.69545316e+12   7.77031615e+12   7.84579433e+12   7.92189041e+12]
+[  7.69545316e+12   7.77031615e+12   7.84579433e+12   7.92189041e+12]
+[  7.69545316e+12   7.77031615e+12   7.84579433e+12   7.92189041e+12]
+checking output of planck function at ISCO, next three outputs should agree:
+8.65176994615e+15
+8.65176994615e+15
+8.65176994615e+15
+[Finished in 4.1s]
+
+
+
+
+
+
+
+
+
+
+
 notes:March 15
 OUTPUTS:
 
@@ -18,11 +88,6 @@ temperature at isco [K]
 temperature at ISCO [K]
 68921.1710386
 output of planck function at ISCO lambda=479.0e-9 m 
-dummy
-4.729986801e+15
-other alpha
-0.436128424515
-planckfunction [J/(s m^3)]
 8.65176994615e+15
 
 

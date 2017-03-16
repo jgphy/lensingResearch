@@ -2,7 +2,7 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 
-def distanceMap(mapSize,pixelSize):
+def distanceMap		(mapSize,pixelSize):
 	
 	dMap=np.zeros((mapSize,mapSize))
 	center=mapSize//2
@@ -12,10 +12,11 @@ def distanceMap(mapSize,pixelSize):
 			dMap[i,j]=dMap[i,j]*pixelSize
 	return(dMap)
 
-def emptyArray(size):
+def emptyArray		(size):
+
 	return(np.zeros((size,size)))
 
-def addGap(surfaceMap,valueRange,metric):
+def addGap			(surfaceMap,valueRange,metric):
 
 	if metric== "mapValues":
 		for i in range(0,len(surfaceMap)):
@@ -32,7 +33,7 @@ def addGap(surfaceMap,valueRange,metric):
 
 	return(surfaceMap)
 
-def invertedGap(surfaceMap,valueRange,metric):
+def invertedGap		(surfaceMap,valueRange,metric):
 
 	if metric== "mapValues":
 		for i in range(0,len(surfaceMap)):
@@ -49,12 +50,6 @@ def invertedGap(surfaceMap,valueRange,metric):
 
 	return(surfaceMap)
 
+def line			(start,end,nPoints):
 
-def line(start,end,nPoints):
 	return(np.linspace(start,end,nPoints))
-
-def info():
-	print("distanceMap(mapSize= 'dimensions of map') : return a n x n array with distance values from the center.")
-	print("Gap(surfaceMap,valueRange=[1,2],metric= mapValues or distanceValues): inserts a gap into surfaceMap")
-	print("invertedGap(surfaceMap,valueRange[1,2], metric= mapValues or distanceValues: zeros everything not within valueRange")
-	print("emptyArray(size): returns 2d array filled with zeros")

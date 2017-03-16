@@ -3,11 +3,9 @@ import numpy as np
 import math
 import structures
 
-def SStemperatureMap(distMap,isco,BHmass): #using SS disk model
-	# BHmass=BHmass*solarMass
+def SStemperatureMap    (distMap,isco,BHmass): #using SS disk model
 	Mdot=ratio*8.0*math.pi*c*mProton*isco
 	Mdot=Mdot/sigT #kg/s based on black hole with no spin 
-	print(Mdot)
 	A=(G*BHmass*Mdot)/(8.0*(math.pi)*sigma)
 	A=A**(.25)
 	dimension=(len(distMap))
@@ -20,7 +18,7 @@ def SStemperatureMap(distMap,isco,BHmass): #using SS disk model
 				tempMap[i,j]=A*dummy
 	return(tempMap)
 	
-def IntensityMap(tempMap,wValue):
+def IntensityMap        (tempMap,wValue):
 	dimension=(len(tempMap))
 
 	intensity=np.zeros((dimension,dimension))
@@ -34,30 +32,30 @@ def IntensityMap(tempMap,wValue):
 				dummy=2.0*h*(c**2)/dummy
 				intensity[i,j]=dummy
 	return(intensity)
-
-def normalize(mapArray):
+	
+def normalize           (mapArray):
 	# tots=sum(sum(mapArray))
 	tots=np.sum(mapArray)
 	return(mapArray/tots)
 
-def log(mapArray):
+def log                 (mapArray):
 	for i in range(0,len(mapArray)):
 		for j in range(0,len(mapArray)):
 			if mapArray[i,j] !=0:
 				mapArray[i,j]=math.log(mapArray[i,j])
 	return(mapArray)
 
-def isolateRegion(maparray,bottomleft,valueRange):
+def isolateRegion       (maparray,bottomleft,valueRange):
 	# This function lets you focous on a specific section of the map by specifying the bottom left corner
 	# of a box of of some size (valueRange)
 	return(maparray[bottomleft[0]:bottomleft[0]+valueRange,bottomleft[1]:bottomleft[1]+valueRange])
 
-def zoom(mapArray,location,dimension):
+def zoom                (mapArray,location,dimension):
 
 
 	return(maparray[location[0]-(dimension/2):location[0]-1+(dimension/2),location[1]-(dimension/2):location[1]-1 + (dimension/2)])
 
-def convolve(magMap,intensityMap,regionData):# example of regionData: regionData=[bottomleftCorner,[xrange,yrange]]
+def convolve            (magMap,intensityMap,regionData):# example of regionData: regionData=[bottomleftCorner,[xrange,yrange]]
 	mapRegion=isolateRegion(magMap,regionData[0],regionData[1])
 	IMsize=np.shape(intensityMap)
 	i=0
@@ -69,7 +67,7 @@ def convolve(magMap,intensityMap,regionData):# example of regionData: regionData
 
 	return(points)
 
-def where(mapArray,valueRange):
+def where               (mapArray,valueRange):
 	mapSize=np.shape(mapArray)
 	values=list()
 	for i in range(0,mapSize-1):
@@ -78,13 +76,13 @@ def where(mapArray,valueRange):
 
 	return(values)
 
-def xycoordinate(map,point):
+def xycoordinate        (map,point):
 	IMsize=np.shape(map)
 	xpoint=point%IMsize[0]
 	ypoint=point//IMsize[0]
 	return([xpoint,ypoint])
 
-def tilt(magMap,degree):
+def tilt                (magMap,degree):
 	theta=degree*math.pi/180
 	factor=math.cos(theta)
 	mapSize=np.shape(magMap)
@@ -102,7 +100,7 @@ def tilt(magMap,degree):
 
 	return()
 
-def figureOutMapSize(BHmass,spin,pixelSize,isco):
+def figureOutMapSize    (BHmass,spin,pixelSize,isco):
 	percentDiff=1000
 	mapSize=300
 	tots_not=1
@@ -115,8 +113,8 @@ def figureOutMapSize(BHmass,spin,pixelSize,isco):
 		percentDiff=(Diff/tots_not)*100
 		mapSize=mapSize+50 
 		tots_not=tots
-		print(tots)
-		print(Diff)
+		# print(tots)
+		# print(Diff)
 	return(mapSize)
 
 
