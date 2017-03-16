@@ -8,7 +8,7 @@ import 	quasar
 import 	structures
 
 def main():
-#############################################SET UP STUFF############################################
+#############################################	SET UP STUFF			############################################
 	
 	quasarName="PG1115+080"
 	BHmass=1.0e9*solarMass
@@ -19,10 +19,9 @@ def main():
 	mapSize=500
 	R_E= 3.62e14
 	lRpixelSize=R_E*25./10000.
- 	hRpixelSize=R_E*1./10000.
  	pixelSize= lRpixelSize #now given by whatever website
 
-#############################################CALCULATIONS############################################
+#############################################	CALCULATIONS			############################################
 
 
 	# # mapsSize=calculations.figureOutMapSize(BHmass,spin,pixelSize,isco)
@@ -42,7 +41,7 @@ def main():
 	# radius=dMap[10,450]
 	# print(radius)
 
-#############################################ONE DIMENSIONAL CHECK###################################
+#############################################	ONE DIMENSIONAL CHECK	###################################
 
 	radii=structures.line(isco*(-10),isco*10,1000)
 	radius=abs(radii)
@@ -109,10 +108,7 @@ def main():
 	print("Done with first part of check")
 	print("")
 
-	# plotMethods.plot(radius)
-	# plotMethods.xyplot(radii,temperatures)
-
-#############################################TWO DIMENSIONAL CHECK###################################
+#############################################	TWO DIMENSIONAL CHECK	###################################
 	
 	dMap	=	structures.distanceMap(mapSize,lRpixelSize)
 	dMap	=	structures.addGap(dMap,[0,6*isco],'mapValues')
@@ -154,24 +150,14 @@ def main():
 	# print(planckOut1[0,0])
 	# print(planckOut2[0,0])
 
-#####################################################################################################
-	surface1=plotMethods.surfacePlot(planckOut1)
-	surface2=plotMethods.surfacePlot(planckOut3)
-	plt.show()
+#############################################	PLOTS					###################################
+	
+	# surface1=plotMethods.surfacePlot(planckOut1)
+	# surface2=plotMethods.surfacePlot(planckOut3)
+	# plt.show()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	# plotMethods.plot(radius)
+	# plotMethods.xyplot(radii,pOut)
 
 
 main()
