@@ -15,4 +15,4 @@ wBlue		= 	479.0e-9         	#blue wavelength                    :m
 wRed 		= 	650.0e-9         	#red wavelength                    	:m
 wUV 	 	= 	190.0e-9         	#UV  wavelength                    	:m
 wIR  		= 	800.0e-9         	#IR wavelength                    	:m
-ratio		=	.3                	#eddington ratio
+ratio		=	.15                	#eddington ratio

@@ -10,7 +10,7 @@ def eddingtonLuminosity  ():
 	# print(Ledd)
 	return(Ledd)
 
-def accretionRate        (r_isco,f): #function of ratio of L to L_eddington
+def accretionRate        (r_isco,f): 
 	M_dot=(f*8.0*(pi)*c*mProton*r_isco)/sigT
 	# print("accretion rate aka M_dot [Kg/s]")
 	# print(M_dot)

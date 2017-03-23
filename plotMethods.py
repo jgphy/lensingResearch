@@ -37,3 +37,7 @@ def plot        (data):
 def xyplot      (x,y):
 	plt.plot(x,y)
 	plt.show()
+
+
+# def ds9():
+	

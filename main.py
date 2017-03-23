@@ -1,47 +1,29 @@
-from 	constants import *
+from 	constants 	import *
 import 	calculations
 import 	formulas
 import 	numpy as np
 import 	plotMethods
-import matplotlib.pyplot as plt
+import 	matplotlib.pyplot as plt
 import 	quasar
 import 	structures
+from 	astropy.io import fits
 
 def main():
 #############################################	SET UP STUFF			############################################
 	
-	quasarName="PG1115+080"
-	BHmass=1.0e9*solarMass
-	spin='no spin'
-	isco=quasar.isco(BHmass,spin)
-	M_dot=formulas.accretionRate(isco,ratio) #need to replace .1 with the value from constants.py	
+	quasarName	=	"PG1115+080"
+	BHmass		=	1.0e8*solarMass
+	spin		=	'no spin'
+	isco		=	quasar.isco(BHmass,spin)
+	M_dot		=	formulas.accretionRate(isco,ratio) #need to replace .1 with the value from constants.py	
 	#Map data
-	mapSize=500
-	R_E= 3.62e14
-	lRpixelSize=R_E*25./10000.
- 	pixelSize= lRpixelSize #now given by whatever website
+	mapSize		=	500
+	R_E			= 	3.62e14
+	# R_E 		= 	1.85e15
+	lRpixelSize	=	R_E*25./10000.
+ 	pixelSize	=	lRpixelSize #now given by whatever website
 
-#############################################	CALCULATIONS			############################################
-
-
-	# # mapsSize=calculations.figureOutMapSize(BHmass,spin,pixelSize,isco)
-	# # print(mapSize)
-
-	# #==================================================
-
-	# dMap=structures.distanceMap(mapSize,lRpixelSize)
-
-
-	# dMap=structures.addGap(dMap,[0,6*isco],'mapValues')
-	# # plotMethods.surfacePlot(dMap)
-	# tMap=calculations.SStemperatureMap(dMap,isco,BHmass)
-	# #plotMethods.surfacePlot(tMap)
-	# intMap=calculations.IntensityMap(tMap,wBlue)
-	# plotMethods.surfacePlot(intMap)
-	# radius=dMap[10,450]
-	# print(radius)
-
-#############################################	ONE DIMENSIONAL CHECK	###################################
+#############################################	ONE DIMENSIONAL CHECK	############################################
 
 	radii=structures.line(isco*(-10),isco*10,1000)
 	radius=abs(radii)
@@ -108,7 +90,7 @@ def main():
 	print("Done with first part of check")
 	print("")
 
-#############################################	TWO DIMENSIONAL CHECK	###################################
+#############################################	TWO DIMENSIONAL CHECK	############################################
 	
 	dMap	=	structures.distanceMap(mapSize,lRpixelSize)
 	dMap	=	structures.addGap(dMap,[0,6*isco],'mapValues')
@@ -143,21 +125,47 @@ def main():
 	test2=np.zeros((2,2))
 	test2[0,0]=T_isco
 
-	# planckOut1=calculations.IntensityMap(test2,wBlue)
-	# planckOut2=formulas.planckFunction2D(wBlue,test2)
-	# print("checking output of planck function at ISCO, next three outputs should agree:")
-	# print(pOut0)
-	# print(planckOut1[0,0])
-	# print(planckOut2[0,0])
+	planckOutt1=calculations.IntensityMap(test2,wBlue)
+	planckOutt2=formulas.planckFunction2D(wBlue,test2)
+	print("checking output of planck function at ISCO, next three outputs should agree:")
+	print(pOut0)
+	print(planckOutt1[0,0])
+	print(planckOutt2[0,0])
 
-#############################################	PLOTS					###################################
+#############################################	CALCULATIONS			############################################
+
+
+	dMap	=	structures.distanceMap		(mapSize,lRpixelSize)
+	dMap	=	structures.addGap			(dMap,[0,6.0*isco],'mapValues')
+	tMap	= 	formulas.SSDtemperature2D	(BHmass,M_dot,dMap)
+	intMap	=	calculations.IntensityMap	(tMap,wBlue)
+
+
+	print(np.sum(intMap))
+	#at 5000 x5000 sum=4.95456864945e+17
+	# at 500 x500 4.95456864933e+17
+
+#############################################	PLOTS					############################################
+	# THINGS TO PLOT using plotMethods.surfacePlot()
 	
+	# 	1. dMap 	- nxn map of distances from the black hole
+	# 	2. tMap 	- nxn map of temperatures
+	# 	3. intMap 	- nxn map of intensities  
+	
+
 	# surface1=plotMethods.surfacePlot(planckOut1)
 	# surface2=plotMethods.surfacePlot(planckOut3)
 	# plt.show()
 
 	# plotMethods.plot(radius)
 	# plotMethods.xyplot(radii,pOut)
+	fits.writeto('/home/juan/Developer/lensingResearch/figures/intMap_g_479nm.fits',planckOut1,output_verify='exception',clobber=True)
+	# print(isco)
+	# print(np.min(dMap))
+	# T_max=formulas.SSDtemperature(BHmass,M_dot,6.0*isco)
+	# print(formulas.planckFunction(wBlue,T_max))
+	# print(np.max(planckOut1))
+	# print(6*isco/pixelSize)
 
 
 main()
