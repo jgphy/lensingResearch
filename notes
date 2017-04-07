@@ -1,3 +1,16 @@
+Notes: April 4
+FOUND CRITICAL ERROR: MUST THINK ABOUT THIS IF USING AND OLDER VERSION OF THE CODE:
+ISCO is the innermost stable circular orbit. I was using 6*ISCO instead of just ISCO.
+Not sure when i started to do that. so its something that should be checked if using and olver version of the code
+
+Also: Dont use older version of the code.
+
+
+The format of the constants.py file doesnt seem to be the same between emacs and sublime, but it is for all the other files so its not something that im going to worry about. Edited the fits file writing procedure so that its easier in the future.
+
+NOT sure what the final format will be so i won't make forloops for the calculations.
+and not goint to merge with the master branch just yet
+Still not sure if the writing 
 Notes: march 23:
 -Changed eddingto Ratio to .15 and the mass to 10^8 solar masses
 -created multiple fits files of intensity maps for wavelengths:
