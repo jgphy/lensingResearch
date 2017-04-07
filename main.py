@@ -1,4 +1,16 @@
 from 	constants 	import *
+import         calculations
+import         formulas
+import         numpy as np
+import         plotMethods
+import         matplotlib.pyplot as plt
+import         quasar
+import         structures
+from   astropy.io import fits
+
+def main():
+#############################################  SET UP STUFF                    ############################################
+
 	BHmass		=	1.0e9*solarMass
 	spin		=	'no spin'
 	isco		=	quasar.isco(BHmass,spin)
@@ -136,18 +148,9 @@ from 	constants 	import *
 	# 	3. intMap 	- nxn map of intensities  
 	
 
-	# surface1=plotMethods.surfacePlot(planckOut1)
+	# surface1=plotMethods.surfacePlot(intMap)
 	# surface2=plotMethods.surfacePlot(planckOut3)
 	# plt.show()
-
-	# plotMethods.plot(radius)
-	# plotMethods.xyplot(radii,pOut)
-	# print(isco)
-	# print(np.min(dMap))
-	# T_max=formulas.SSDtemperature(BHmass,M_dot,6.0*isco)
-	# print(formulas.planckFunction(wBlue,T_max))
-	# print(np.max(planckOut1))
-	# print(6*isco/pixelSize)
 
 #############################################	EXPORTING				############################################
 	#things to export: 
@@ -155,8 +158,8 @@ from 	constants 	import *
 	# 2.tMap   - temperature map 
 
 
-	folder='/home/juan/Developer/lensingResearch/figures/'
-	fileName=folder+'intMap_g_479nm.fits'
-	fits.writeto(fileName,intMap,output_verify='exception',clobber=True)
+	# folder='/home/juan/Developer/lensingResearch/figures/'
+	# fileName=folder+'intMap_g_479nm.fits'
+	# fits.writeto(fileName,intMap,output_verify='exception',clobber=True)
 
 main()
