@@ -8,7 +8,7 @@ import         quasar
 import         structures
 from   astropy.io import fits
 
-def main():
+def main()
 #############################################  SET UP STUFF                    ############################################
 
 	BHmass		=	1.0e9*solarMass
@@ -17,7 +17,7 @@ def main():
 	M_dot		=	formulas.accretionRate(isco,ratio) #need to replace .1 with the value from constants.py	
 	
 	#Map data
-	mapSize		=	500
+	mapSize		=	340
 	R_E			= 	3.62e14 
 	pixelSize	=	R_E*25./10000.
 
@@ -138,7 +138,7 @@ def main():
 	dMap	=	structures.distanceMap		(mapSize,pixelSize)
 	dMap	=	structures.addGap			(dMap,[0,isco],'mapValues')
 	tMap	= 	formulas.SSDtemperature2D	(BHmass,M_dot,dMap)
-	intMap	=	calculations.IntensityMap	(tMap,wBlue)
+	intMap	=	calculations.IntensityMap	(tMap,wValues[5])
 
 #############################################	PLOTS					############################################
 	# THINGS TO PLOT using plotMethods.surfacePlot()
@@ -158,8 +158,8 @@ def main():
 	# 2.tMap   - temperature map 
 
 
-	# folder='/home/juan/Developer/lensingResearch/figures/'
-	# fileName=folder+'intMap_g_479nm.fits'
-	# fits.writeto(fileName,intMap,output_verify='exception',clobber=True)
+	folder='/home/juan/Developer/lensingResearch/figures/'
+	fileName=folder+'intMap_y_960nm.fits'
+	fits.writeto(fileName,intMap,output_verify='exception',clobber=True)
 
 main()
