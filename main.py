@@ -8,7 +8,7 @@ import         quasar
 import         structures
 from   astropy.io import fits
 
-def main()
+def main():
 #############################################  SET UP STUFF                    ############################################
 
 	BHmass		=	1.0e9*solarMass
@@ -20,6 +20,9 @@ def main()
 	mapSize		=	340
 	R_E			= 	3.62e14 
 	pixelSize	=	R_E*25./10000.
+	pixelSizeinLightdays=pixelSize*3.8607e-14
+	print(1/(3.0e8 * 86400.))
+	print(pixelSizeinLightdays)
 
 #############################################	ONE DIMENSIONAL CHECK	############################################
 
@@ -132,13 +135,13 @@ def main()
 
 #############################################	CALCULATIONS			############################################
 
-	wArray  = ['u','g','r','i','z','y']
-	wValues = [360.0e-9,479.0e-9,622.0e-9,755.0e-9,870.0e-9,960.0e-9]  #SHOULD I MAKE A DICTIONARY???
+	# wArray  = ['u','g','r','i','z','y']
+	# wValues = [360.0e-9,479.0e-9,622.0e-9,755.0e-9,870.0e-9,960.0e-9]  #SHOULD I MAKE A DICTIONARY???
 
-	dMap	=	structures.distanceMap		(mapSize,pixelSize)
-	dMap	=	structures.addGap			(dMap,[0,isco],'mapValues')
-	tMap	= 	formulas.SSDtemperature2D	(BHmass,M_dot,dMap)
-	intMap	=	calculations.IntensityMap	(tMap,wValues[5])
+	# dMap	=	structures.distanceMap		(mapSize,pixelSize)
+	# dMap	=	structures.addGap			(dMap,[0,isco],'mapValues')
+	# tMap	= 	formulas.SSDtemperature2D	(BHmass,M_dot,dMap)
+	# intMap	=	calculations.IntensityMap	(tMap,wValues[5])
 
 #############################################	PLOTS					############################################
 	# THINGS TO PLOT using plotMethods.surfacePlot()
@@ -158,8 +161,8 @@ def main()
 	# 2.tMap   - temperature map 
 
 
-	folder='/home/juan/Developer/lensingResearch/figures/'
-	fileName=folder+'intMap_y_960nm.fits'
-	fits.writeto(fileName,intMap,output_verify='exception',clobber=True)
+	# folder='/home/juan/Developer/lensingResearch/figures/'
+	# fileName=folder+'intMap_y_960nm.fits'
+	# fits.writeto(fileName,intMap,output_verify='exception',clobber=True)
 
 main()
